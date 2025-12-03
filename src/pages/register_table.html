@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mãos Unidas - Registros</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../styles/style.css">
+
+</head>
+<body>
+
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-custom">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html" aria-label="Página inicial Mãos Unidas">
+                <img src="../img/logo.png" alt="Logo Mãos Unidas">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="#offcanvasNavbar" aria-label="Abrir menu de navegação">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Fechar"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav ms-auto text-center flex-grow-1">
+                        <li class="nav-item"><a class="nav-link" href="../../index.html">Início</a></li>
+                        <li class="nav-item"><a class="nav-link" href="dashboard_doador.html">Doadores</a></li>
+                        <li class="nav-item"><a class="nav-link" href="dashboard_instituicao.html">Instituição</a></li>
+                        <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contato.html">Contato</a></li>
+                        <li class="nav-item"><a class="nav-link" href="transparencia.html">Transparência</a></li>
+                        <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+                        <li class="nav-item"><a class="nav-link" href="register.html">Registro</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="card shadow-lg border-0 rounded-4 p-4">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h3 class="text-custom fw-bold">Registros de Cadastros</h3>
+                    <div>
+                        <a href="register.html" class="btn btn-outline-secondary me-2">Voltar ao Cadastro</a>
+                        <button id="editSelectedBtn" class="btn btn-primary me-2">Editar selecionados</button>
+                        <button id="deleteSelectedBtn" class="btn btn-danger me-2">Excluir selecionados</button>
+                        <button id="clearBtn" class="btn btn-danger">Limpar registros</button>
+                    </div>
+                </div>
+
+                <!-- Formulário embutido: cadastro rápido (mesma página) -->
+                <div class="card mb-3 p-3">
+                    <form id="miniForm" class="row g-2 align-items-end" onsubmit="return false;">
+                        <div class="col-md-3">
+                            <label class="form-label">Nome</label>
+                            <input id="m_nome" class="form-control" placeholder="Nome" required>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">Email</label>
+                            <input id="m_email" type="email" class="form-control" placeholder="email@ex.com" required>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="form-label">CPF</label>
+                            <input id="m_cpf" class="form-control" placeholder="000.000.000-00">
+                        </div>
+                        <div class="col-md-2">
+                            <label class="form-label">Telefone</label>
+                            <input id="m_telefone" class="form-control" placeholder="(00) 0 0000-0000">
+                        </div>
+                        <div class="col-md-2">
+                            <label class="form-label">Tipo</label>
+                            <select id="m_tipo" class="form-select">
+                                <option value="doador">Doador</option>
+                                <option value="instituicao">Instituição</option>
+                            </select>
+                        </div>
+                        <div class="col-12 text-end mt-2">
+                            <button id="miniAddBtn" class="btn btn-success">Cadastrar (mesma página)</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div id="tableContainer" class="table-responsive">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="bg-custom text-white py-5 mt-5">
+    <div class="container">
+        <div class="row gy-4 align-items-center">
+            <div class="col-lg-5 text-center text-lg-start">
+                <a href="../../index.html" class="mb-3 d-inline-block">
+                    <img src="../img/logo.png" alt="Logo Mãos Unidas" class="logo-footer">
+                </a>
+                <p>Seja você um doador ou instituição, o cadastro é simples e leva poucos minutos.</p>
+            </div>
+            <div class="col-lg-6 text-center text-lg-start ps-lg-5">
+                <h5 class="text-uppercase">Menu</h5>
+                <ul class="list-unstyled">
+                    <li><a href="../../index.html">Início</a></li>
+                    <li><a href="dashboard_doador.html">Doadores</a></li>
+                    <li><a href="dashboard_instituicao.html">Instituição</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                    <li><a href="transparencia.html">Transparência</a></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="register.html">Registro</a></li>
+                </ul>
+            </div>
+        </div>
+        <hr class="my-4" style="color: rgba(255,255,255,0.2);">
+        <div class="text-center">
+            <p class="mb-0">&copy; Mãos Unidas 2025. Todos os direitos reservados.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Função para formatar data ISO para dd/mm/aaaa
+    function formatDate(iso) {
+        if (!iso) return '';
+        const d = new Date(iso);
+        if (isNaN(d)) return iso;
+        return d.toLocaleDateString('pt-BR');
+    }
+
+    function buildTable(regs) {
+        const container = document.getElementById('tableContainer');
+        container.innerHTML = '';
+
+        if (!regs || regs.length === 0) {
+            container.innerHTML = '<p class="mb-0">Nenhum registro encontrado.</p>';
+            return;
+        }
+
+        // Separe registros entre pessoas (CPF / doador) e empresas/instituições (CNPJ ou tipo instituicao)
+        const people = regs.filter(r => (r.documentoTipo === 'cpf') || (r.tipo === 'doador' && r.cpf));
+        const companies = regs.filter(r => (r.documentoTipo === 'cnpj') || (r.tipo === 'instituicao' || r.cnpj));
+
+        if (people.length > 0) {
+            const peopleTitle = document.createElement('h5');
+            peopleTitle.textContent = 'Pessoas / Doadores';
+            peopleTitle.className = 'mt-2';
+            container.appendChild(peopleTitle);
+
+            const table = document.createElement('table');
+            table.className = 'table table-striped table-hover';
+            const thead = document.createElement('thead');
+            thead.innerHTML = `
+                <tr>
+                    <th style="width:40px"><input id="selectAllPeople" type="checkbox"></th>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>CPF</th>
+                    <th>Telefone</th>
+                    <th>RG</th>
+                    <th>Endereço</th>
+                    <th>Bairro</th>
+                    <th>Cidade</th>
+                    <th>Estado</th>
+                    <th>CEP</th>
+                    <th>Data Nasc.</th>
+                    <th>Tipo</th>
+                    <th>Cadastro em</th>
+                    <th>Ações</th>
+                </tr>
+            `;
+            table.appendChild(thead);
+            const tbody = document.createElement('tbody');
+            people.forEach((r, idx) => {
+                const tr = document.createElement('tr');
+                const originalIndex = regs.indexOf(r);
+                tr.innerHTML = `
+                    <td><input class="row-checkbox" type="checkbox" data-index="${originalIndex}"></td>
+                    <td>${r.nome || ''}</td>
+                    <td>${r.email || ''}</td>
+                    <td>${r.cpf || ''}</td>
+                    <td>${r.telefone || ''}</td>
+                    <td>${r.rg || ''}</td>
+                    <td>${r.endereco || ''}</td>
+                    <td>${r.bairro || ''}</td>
+                    <td>${r.cidade || ''}</td>
+                    <td>${r.estado || ''}</td>
+                    <td>${r.cep || ''}</td>
+                    <td>${r.data_nascimento ? new Date(r.data_nascimento).toLocaleDateString('pt-BR') : ''}</td>
+                    <td>${r.tipo || ''}</td>
+                    <td>${formatDate(r.criadoEm)}</td>
+                    <td>
+                        <button class="btn btn-sm btn-outline-primary me-1 single-edit-btn" data-index="${originalIndex}">Editar</button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+            table.appendChild(tbody);
+            container.appendChild(table);
+        }
+
+        if (companies.length > 0) {
+            const compTitle = document.createElement('h5');
+            compTitle.textContent = 'Empresas / Instituições';
+            compTitle.className = 'mt-4';
+            container.appendChild(compTitle);
+
+            const table = document.createElement('table');
+            table.className = 'table table-striped table-hover';
+            const thead = document.createElement('thead');
+            thead.innerHTML = `
+                <tr>
+                    <th style="width:40px"><input id="selectAllCompanies" type="checkbox"></th>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>CNPJ</th>
+                    <th>Nome Empresa</th>
+                    <th>Local Empresa</th>
+                    <th>Telefone</th>
+                    <th>Endereço</th>
+                    <th>Bairro</th>
+                    <th>Cidade</th>
+                    <th>Estado</th>
+                    <th>CEP</th>
+                    <th>Tipo</th>
+                    <th>Cadastro em</th>
+                    <th>Ações</th>
+                </tr>
+            `;
+            table.appendChild(thead);
+            const tbody = document.createElement('tbody');
+            companies.forEach((r) => {
+                const tr = document.createElement('tr');
+                const originalIndex = regs.indexOf(r);
+                tr.innerHTML = `
+                    <td><input class="row-checkbox" type="checkbox" data-index="${originalIndex}"></td>
+                    <td>${r.nome_instituicao || r.nome || ''}</td>
+                    <td>${r.email || ''}</td>
+                    <td>${r.cnpj || ''}</td>
+                    <td>${r.nome_empresa || ''}</td>
+                    <td>${r.local_empresa || ''}</td>
+                    <td>${r.telefone || ''}</td>
+                    <td>${r.endereco || ''}</td>
+                    <td>${r.bairro || ''}</td>
+                    <td>${r.cidade || ''}</td>
+                    <td>${r.estado || ''}</td>
+                    <td>${r.cep || ''}</td>
+                    <td>${r.tipo || ''}</td>
+                    <td>${formatDate(r.criadoEm)}</td>
+                    <td>
+                        <button class="btn btn-sm btn-outline-primary me-1 single-edit-btn" data-index="${originalIndex}">Editar</button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+            table.appendChild(tbody);
+            container.appendChild(table);
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // Usar somente um vetor em memória (`regs`) contendo exemplos embutidos
+        const examples = [
+            { nome: 'João Silva', genero: 'masculino', email: 'joao.silva@example.com', documentoTipo: 'cpf', cpf: '123.456.789-09', telefone: '(11) 98888-7777', rg: '12.345.678-9', endereco: 'Av. Paulista, 1000', bairro: 'Bela Vista', cidade: 'São Paulo', estado: 'SP', cep: '01310-100', data_nascimento: '1990-05-10', tipo: 'doador', escolaridade: 'ensino_superior_completo', criadoEm: new Date().toISOString() },
+            { nome: 'Mariana Costa', genero: 'feminino', email: 'mariana.costa@example.com', documentoTipo: 'cpf', cpf: '987.654.321-00', telefone: '(21) 97777-6666', rg: '98.765.432-1', endereco: 'Rua das Flores, 200', bairro: 'Centro', cidade: 'Rio de Janeiro', estado: 'RJ', cep: '20010-000', data_nascimento: '1985-03-22', tipo: 'doador', escolaridade: 'ensino_medio_completo', criadoEm: new Date().toISOString() },
+            { nome_instituicao: 'Instituto Esperança', nome: 'Instituto Esperança', email: 'contato@institutoesperanca.org', documentoTipo: 'cnpj', cnpj: '12.345.678/0001-90', telefone: '(31) 99999-5555', endereco: 'Av. Aconchego, 50', bairro: 'Centro', cidade: 'Belo Horizonte', estado: 'MG', cep: '30110-000', tipo: 'instituicao', criadoEm: new Date().toISOString(), nome_empresa: 'Instituto Esperança', local_empresa: 'Belo Horizonte' },
+            { nome: 'Carlos Pereira', genero: 'masculino', email: 'carlos.pereira@example.com', documentoTipo: 'cpf', cpf: '321.654.987-11', telefone: '(85) 98888-4444', rg: '32.165.498-0', endereco: 'Av. Beira Mar, 500', bairro: 'Praia', cidade: 'Fortaleza', estado: 'CE', cep: '60010-000', data_nascimento: '1992-11-02', tipo: 'doador', criadoEm: new Date().toISOString() },
+            { nome: 'Ana Rodrigues', genero: 'feminino', email: 'ana.rodrigues@example.com', documentoTipo: 'cpf', cpf: '555.666.777-88', telefone: '(41) 97777-3333', rg: '55.566.677-3', endereco: 'Rua dos Pinheiros, 123', bairro: 'Jardim', cidade: 'Curitiba', estado: 'PR', cep: '80010-000', data_nascimento: '1991-07-15', tipo: 'doador', criadoEm: new Date().toISOString() },
+            { nome: 'Felipe Gomes', genero: 'masculino', email: 'felipe.gomes@example.com', documentoTipo: 'cpf', cpf: '444.333.222-11', telefone: '(27) 96666-2222', rg: '44.433.322-0', endereco: 'Al. Santos, 45', bairro: 'Centro', cidade: 'Vitória', estado: 'ES', cep: '29010-000', data_nascimento: '1988-09-05', tipo: 'doador', criadoEm: new Date().toISOString() },
+            { nome_instituicao: 'Casa Solidária', nome: 'Casa Solidária', email: 'contato@casasolidaria.org', documentoTipo: 'cnpj', cnpj: '98.765.432/0001-12', telefone: '(11) 94444-1111', endereco: 'Rua Solidariedade, 10', bairro: 'Vila Nova', cidade: 'São Paulo', estado: 'SP', cep: '04510-000', tipo: 'instituicao', criadoEm: new Date().toISOString(), nome_empresa: 'Casa Solidária', local_empresa: 'São Paulo' },
+            { nome: 'Marcos Lima', genero: 'masculino', email: 'marcos.lima@example.com', documentoTipo: 'cpf', cpf: '222.333.444-55', telefone: '(62) 98888-1111', rg: '22.233.344-5', endereco: 'Av. Brasil, 250', bairro: 'Setor Central', cidade: 'Goiânia', estado: 'GO', cep: '74010-000', data_nascimento: '1983-01-20', tipo: 'doador', criadoEm: new Date().toISOString() }
+        ];
+
+        // Vetor em memória contendo os registros (apenas na sessão)
+        let regs = examples.slice();
+
+        // Se foi feita transferência via window.name (vindo de register.html), insere no início
+        try {
+            if (window.name) {
+                const transferred = JSON.parse(window.name);
+                if (transferred && typeof transferred === 'object' && !Array.isArray(transferred)) {
+                    regs.unshift(transferred);
+                }
+                // limpa a transferência para não reaplicar ao recarregar
+                window.name = '';
+            }
+        } catch (err) {
+            console.error('Erro ao processar transferência via window.name', err);
+            window.name = '';
+        }
+
+        buildTable(regs);
+
+        // --- Máscaras para o formulário rápido e modal de edição ---
+        function onlyDigits(s){ return (s||'').replace(/\D/g,''); }
+        function maskCPF(v){ v = (v||'').replace(/\D/g,''); v = v.replace(/(\d{3})(\d)/,'$1.$2'); v = v.replace(/(\d{3})(\d)/,'$1.$2'); v = v.replace(/(\d{3})(\d{1,2})$/,'$1-$2'); return v; }
+        function maskCNPJ(v){ v = (v||'').replace(/\D/g,''); v = v.replace(/(\d{2})(\d)/,'$1.$2'); v = v.replace(/(\d{3})(\d)/,'$1.$2'); v = v.replace(/(\d{3})(\d)/,'$1/$2'); v = v.replace(/(\d{4})(\d{1,2})$/,'$1-$2'); return v; }
+        function maskTel(v){ v = (v||'').replace(/\D/g,''); v = v.replace(/^(\d{2})(\d)/,'($1) $2'); v = v.replace(/(\d{5})(\d)/,'$1-$2'); return v; }
+        function maskCEP(v){ v = (v||'').replace(/\D/g,''); v = v.replace(/(\d{5})(\d)/,'$1-$2'); return v; }
+
+        // mini form fields
+        const mCpf = document.getElementById('m_cpf');
+        const mTel = document.getElementById('m_telefone');
+        if (mCpf) mCpf.addEventListener('input', e => e.target.value = maskCPF(e.target.value));
+        if (mTel) mTel.addEventListener('input', e => e.target.value = maskTel(e.target.value));
+
+        // masks for modal edit inputs (if present)
+        const editCpf = document.getElementById('edit_cpf');
+        const editCnpj = document.getElementById('edit_cnpj');
+        const editTel = document.getElementById('edit_telefone');
+        const editCep = document.getElementById('edit_cep');
+        if (editCpf) editCpf.addEventListener('input', e => e.target.value = maskCPF(e.target.value));
+        if (editCnpj) editCnpj.addEventListener('input', e => e.target.value = maskCNPJ(e.target.value));
+        if (editTel) editTel.addEventListener('input', e => e.target.value = maskTel(e.target.value));
+        if (editCep) editCep.addEventListener('input', e => e.target.value = maskCEP(e.target.value));
+
+        // Handler para o formulário embutido (adicionar na mesma página)
+        const miniForm = document.getElementById('miniForm');
+        if (miniForm) {
+            miniForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const nome = (document.getElementById('m_nome') || {}).value || '';
+                const email = (document.getElementById('m_email') || {}).value || '';
+                const cpf = (document.getElementById('m_cpf') || {}).value || '';
+                const telefone = (document.getElementById('m_telefone') || {}).value || '';
+                const tipo = (document.getElementById('m_tipo') || {}).value || 'doador';
+
+                if (!nome || !email) { alert('Nome e email são obrigatórios.'); return; }
+
+                const newReg = {
+                    nome,
+                    email,
+                    cpf,
+                    telefone,
+                    tipo,
+                    criadoEm: new Date().toISOString()
+                };
+
+                // adiciona ao início da lista e re-renderiza
+                regs.unshift(newReg);
+                buildTable(regs);
+
+                // limpa campos do formulário
+                document.getElementById('m_nome').value = '';
+                document.getElementById('m_email').value = '';
+                document.getElementById('m_cpf').value = '';
+                document.getElementById('m_telefone').value = '';
+                document.getElementById('m_tipo').value = 'doador';
+            });
+        }
+
+                document.getElementById('clearBtn').addEventListener('click', () => {
+                    if (!confirm('Deseja realmente limpar todos os registros atuais da tabela? Esta ação não pode ser desfeita.')) return;
+                    // Limpa apenas o vetor em memória (exemplos também serão removidos)
+                    regs = [];
+                    buildTable(regs);
+                });
+
+                document.getElementById('tableContainer').addEventListener('click', (e) => {
+                        const singleEdit = e.target.closest('.single-edit-btn');
+                        if (singleEdit) {
+                            const index = Number(singleEdit.dataset.index);
+                            openEditModal(index);
+                            return;
+                        }
+                    });
+
+                    // Select all handling (people/companies separate tables)
+                    document.addEventListener('change', (e) => {
+                        if (e.target && e.target.id === 'selectAllPeople') {
+                        const checked = e.target.checked;
+                        document.querySelectorAll('#tableContainer table:nth-of-type(1) .row-checkbox').forEach(cb => cb.checked = checked);
+                        }
+                        if (e.target && e.target.id === 'selectAllCompanies') {
+                        const checked = e.target.checked;
+                        // companies will be the second table if present
+                        const tables = document.querySelectorAll('#tableContainer table');
+                        if (tables[1]) tables[1].querySelectorAll('.row-checkbox').forEach(cb => cb.checked = checked);
+                        }
+                    });
+
+                    // Botões globais: excluir selecionados e editar selecionados
+                    document.getElementById('deleteSelectedBtn').addEventListener('click', () => {
+                        const checked = Array.from(document.querySelectorAll('.row-checkbox:checked'));
+                        if (checked.length === 0) { alert('Selecione ao menos um registro para excluir.'); return; }
+                        if (!confirm(`Deseja realmente excluir ${checked.length} registro(s)? Esta ação não pode ser desfeita.`)) return;
+                        const indexes = checked.map(cb => Number(cb.dataset.index)).filter(n => !isNaN(n));
+                        // remover por índices em ordem decrescente para não invalidar posições
+                        indexes.sort((a,b) => b - a).forEach(i => regs.splice(i,1));
+                        buildTable(regs);
+                    });
+
+                    // Edição sequencial dos selecionados
+                    let pendingEditIndices = [];
+                    document.getElementById('editSelectedBtn').addEventListener('click', () => {
+                        const checked = Array.from(document.querySelectorAll('.row-checkbox:checked'));
+                        if (checked.length === 0) { alert('Selecione ao menos um registro para editar.'); return; }
+                        // coletar índices em ordem crescente
+                        pendingEditIndices = checked.map(cb => Number(cb.dataset.index)).filter(n => !isNaN(n)).sort((a,b)=>a-b);
+                        // abre o primeiro
+                        const next = pendingEditIndices.shift();
+                        if (typeof next === 'number') openEditModal(next);
+                    });
+
+                const editModalEl = document.getElementById('editModal');
+                const bootstrapModal = editModalEl ? new bootstrap.Modal(editModalEl) : null;
+
+                document.getElementById('editForm')?.addEventListener('submit', (ev) => {
+                        ev.preventDefault();
+                        const idx = Number(document.getElementById('edit_index').value);
+                        if (!regs[idx]) return;
+
+                        const updated = {
+                            ...regs[idx],
+                            nome: document.getElementById('edit_nome').value.trim(),
+                            email: document.getElementById('edit_email').value.trim(),
+                            cpf: document.getElementById('edit_cpf').value.trim(),
+                            cnpj: document.getElementById('edit_cnpj') ? document.getElementById('edit_cnpj').value.trim() : (regs[idx].cnpj || ''),
+                            telefone: document.getElementById('edit_telefone').value.trim(),
+                            rg: document.getElementById('edit_rg') ? document.getElementById('edit_rg').value.trim() : (regs[idx].rg || ''),
+                            nome_instituicao: document.getElementById('edit_nome_instituicao') ? document.getElementById('edit_nome_instituicao').value.trim() : (regs[idx].nome_instituicao || ''),
+                            nome_empresa: document.getElementById('edit_nome_empresa') ? document.getElementById('edit_nome_empresa').value.trim() : (regs[idx].nome_empresa || ''),
+                            local_empresa: document.getElementById('edit_local_empresa') ? document.getElementById('edit_local_empresa').value.trim() : (regs[idx].local_empresa || ''),
+                            endereco: document.getElementById('edit_endereco').value.trim(),
+                            bairro: document.getElementById('edit_bairro') ? document.getElementById('edit_bairro').value.trim() : (regs[idx].bairro || ''),
+                            cidade: document.getElementById('edit_cidade').value.trim(),
+                            estado: document.getElementById('edit_estado').value.trim(),
+                            cep: document.getElementById('edit_cep').value.trim(),
+                            data_nascimento: document.getElementById('edit_data_nascimento').value,
+                            tipo: document.getElementById('edit_tipoUsuario').value
+                        };
+
+                        regs[idx] = updated;
+                        buildTable(regs);
+                        // se ainda houver índices pendentes para edição, prossegue para o próximo
+                        if (window.pendingEditIndices && window.pendingEditIndices.length > 0) {
+                            const nextIdx = window.pendingEditIndices.shift();
+                            // atualiza a tabela e abre o modal para o próximo
+                            openEditModal(nextIdx);
+                        } else {
+                            bootstrapModal.hide();
+                        }
+                });
+
+                function openEditModal(index) {
+                    const r = regs[index];
+                    if (!r) return;
+                    document.getElementById('edit_index').value = index;
+                    document.getElementById('edit_nome').value = r.nome || '';
+                    document.getElementById('edit_email').value = r.email || '';
+                    document.getElementById('edit_cpf').value = r.cpf || '';
+                    if (document.getElementById('edit_cnpj')) document.getElementById('edit_cnpj').value = r.cnpj || '';
+                    document.getElementById('edit_telefone').value = r.telefone || '';
+                    if (document.getElementById('edit_rg')) document.getElementById('edit_rg').value = r.rg || '';
+                    if (document.getElementById('edit_nome_instituicao')) document.getElementById('edit_nome_instituicao').value = r.nome_instituicao || '';
+                    if (document.getElementById('edit_nome_empresa')) document.getElementById('edit_nome_empresa').value = r.nome_empresa || '';
+                    if (document.getElementById('edit_local_empresa')) document.getElementById('edit_local_empresa').value = r.local_empresa || '';
+                    document.getElementById('edit_endereco').value = r.endereco || '';
+                    if (document.getElementById('edit_bairro')) document.getElementById('edit_bairro').value = r.bairro || '';
+                    document.getElementById('edit_cidade').value = r.cidade || '';
+                    document.getElementById('edit_estado').value = r.estado || '';
+                    document.getElementById('edit_cep').value = r.cep || '';
+                    document.getElementById('edit_data_nascimento').value = r.data_nascimento || '';
+                    document.getElementById('edit_tipoUsuario').value = r.tipo || '';
+                    // expose pendingEditIndices globally so submit handler can continue sequence
+                    window.pendingEditIndices = window.pendingEditIndices || [];
+                    bootstrapModal.show();
+                }
+    });
+</script>
+
+<div class="modal fade" id="editModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Editar Registro</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+            </div>
+            <form id="editForm">
+                <input type="hidden" id="edit_index">
+                <div class="modal-body">
+                    <div class="row g-2">
+                        <div class="col-md-6 form-floating mb-2">
+                            <input id="edit_nome" class="form-control" required>
+                            <label for="edit_nome">Nome</label>
+                        </div>
+                        <div class="col-md-6 form-floating mb-2">
+                            <input id="edit_email" type="email" class="form-control" required>
+                            <label for="edit_email">Email</label>
+                        </div>
+                        <div class="col-md-4 form-floating mb-2">
+                            <input id="edit_cpf" class="form-control">
+                            <label for="edit_cpf">CPF</label>
+                        </div>
+                        <div class="col-md-4 form-floating mb-2">
+                            <input id="edit_cnpj" class="form-control">
+                            <label for="edit_cnpj">CNPJ</label>
+                        </div>
+                        <div class="col-md-4 form-floating mb-2">
+                            <input id="edit_telefone" class="form-control">
+                            <label for="edit_telefone">Telefone</label>
+                        </div>
+                        <div class="col-md-4 form-floating mb-2">
+                            <input id="edit_rg" class="form-control">
+                            <label for="edit_rg">RG</label>
+                        </div>
+                        <div class="col-md-4 form-floating mb-2">
+                            <input id="edit_nome_instituicao" class="form-control">
+                            <label for="edit_nome_instituicao">Nome Instituição</label>
+                        </div>
+                        <div class="col-md-4 form-floating mb-2">
+                            <input id="edit_nome_empresa" class="form-control">
+                            <label for="edit_nome_empresa">Nome Empresa</label>
+                        </div>
+                        <div class="col-md-6 form-floating mb-2">
+                            <input id="edit_local_empresa" class="form-control">
+                            <label for="edit_local_empresa">Local Empresa</label>
+                        </div>
+                        <div class="col-12 form-floating mb-2">
+                            <input id="edit_endereco" class="form-control">
+                            <label for="edit_endereco">Endereço</label>
+                        </div>
+                        <div class="col-md-6 form-floating mb-2">
+                            <input id="edit_bairro" class="form-control">
+                            <label for="edit_bairro">Bairro</label>
+                        </div>
+                        <div class="col-md-6 form-floating mb-2">
+                            <input id="edit_cidade" class="form-control">
+                            <label for="edit_cidade">Cidade</label>
+                        </div>
+                        <div class="col-md-6 form-floating mb-2">
+                            <input id="edit_estado" class="form-control">
+                            <label for="edit_estado">Estado (UF)</label>
+                        </div>
+                        <div class="col-md-6 form-floating mb-2">
+                            <input id="edit_cep" class="form-control">
+                            <label for="edit_cep">CEP</label>
+                        </div>
+                        <div class="col-md-6 form-floating mb-2">
+                            <input id="edit_data_nascimento" type="date" class="form-control">
+                            <label for="edit_data_nascimento">Data Nascimento</label>
+                        </div>
+                        <div class="col-12 form-floating mb-2">
+                            <select id="edit_tipoUsuario" class="form-select">
+                                <option value="">Selecione...</option>
+                                <option value="doador">Sou Doador</option>
+                                <option value="instituicao">Sou Instituição</option>
+                            </select>
+                            <label for="edit_tipoUsuario">Tipo de Usuário</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Salvar alterações</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mãos Unidas - Cadastro</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+
+    <!-- Fontes -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@700&display=swap" rel="stylesheet">
+
+    <!-- Estilos principais -->
+    <link rel="stylesheet" href="../styles/style.css">
+
+</head>
+<body>
+
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-custom">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html" aria-label="Página inicial Mãos Unidas">
+                <img src="../img/logo.png" alt="Logo Mãos Unidas">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Abrir menu de navegação">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Fechar"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav ms-auto text-center flex-grow-1">
+                        <li class="nav-item"><a class="nav-link" href="../../index.html">Início</a></li>
+                        <li class="nav-item"><a class="nav-link" href="dashboard_doador.html">Doadores</a></li>
+                        <li class="nav-item"><a class="nav-link" href="dashboard_instituicao.html">Instituição</a></li>
+                        <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contato.html">Contato</a></li>
+                        <li class="nav-item"><a class="nav-link" href="transparencia.html">Transparência</a></li>
+                        <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main class="container my-5">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+            <div class="card shadow-lg border-0 rounded-4 p-4">
+                <div class="text-center mb-4">
+                    <img src="../img/logo2.png" alt="Logotipo Mãos Unidas" class="img-fluid" style="max-width: 180px;">
+                    <h3 class="mt-3 text-custom fw-bold">Cadastro de Usuário</h3>
+                </div>
+
+                <form id="cadastroForm" novalidate>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="nome" placeholder="Seu nome completo" required>
+                        <label for="nome">Nome completo</label>
+                        <div class="invalid-feedback">Nome é obrigatório.</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="genero" class="form-label">Gênero</label>
+                        <select class="form-select" id="genero" required>
+                            <option value="">Selecione...</option>
+                            <option value="masculino">Masculino</option>
+                            <option value="feminino">Feminino</option>
+                            <option value="outros">Outros</option>
+                        </select>
+                        <div class="invalid-feedback">Selecione o gênero.</div>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="email" placeholder="seu@email.com" required>
+                        <label for="email">Email</label>
+                        <div class="invalid-feedback">Informe um e-mail válido.</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="documentoTipo" class="form-label">Documento</label>
+                        <select class="form-select" id="documentoTipo">
+                            <option value="cpf" selected>CPF</option>
+                            <option value="cnpj">CNPJ</option>
+                        </select>
+                    </div>
+
+                    <div id="cpfGroup" class="form-floating mb-3">
+                        <input type="text" class="form-control" id="cpf" placeholder="999.999.999-99" maxlength="14" required>
+                        <label for="cpf">CPF</label>
+                        <div class="invalid-feedback">Informe um CPF válido.</div>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="telefone" placeholder="(99) 99999-9999" maxlength="15" required>
+                        <label for="telefone">Telefone</label>
+                        <div class="invalid-feedback">Informe um telefone válido.</div>
+                    </div>
+
+                    <div class="form-floating mb-3" id="rgGroup">
+                        <input type="text" class="form-control" id="rg" placeholder="Seu RG" maxlength="12" required>
+                        <label for="rg">RG</label>
+                        <div class="invalid-feedback">RG é obrigatório.</div>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="profissao" placeholder="Profissão">
+                        <label for="profissao">Profissão</label>
+                        <div class="invalid-feedback">Informe sua profissão.</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="motivo" class="form-label">Motivo da inscrição / Interesse</label>
+                        <textarea class="form-control" id="motivo" rows="3" placeholder="Explique o motivo do seu cadastro / interesse..."></textarea>
+                        <div class="invalid-feedback">Descreva o motivo (mínimo 10 caracteres).</div>
+                    </div>
+
+                    <div class="row g-2 mb-3">
+                        <div class="col-8">
+                            <div class="form-floating mb-0">
+                                <input type="text" class="form-control" id="endereco" placeholder="Rua, nº, bairro" required>
+                                <label for="endereco">Endereço</label>
+                                <div class="invalid-feedback">Endereço é obrigatório.</div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-floating mb-0">
+                                <input type="text" class="form-control" id="bairro" placeholder="Bairro" required>
+                                <label for="bairro">Bairro</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row g-2 mb-3">
+                        <div class="col-7">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="cidade" placeholder="Cidade" required>
+                                <label for="cidade">Cidade</label>
+                                <div class="invalid-feedback">Cidade é obrigatória.</div>
+                            </div>
+                        </div>
+                        <div class="col-5">
+                            <div class="form-floating">
+                                <select class="form-select" id="estado" required>
+                                    <option value="">Selecione...</option>
+                                    <option value="AC">AC</option>
+                                    <option value="AL">AL</option>
+                                    <option value="AP">AP</option>
+                                    <option value="AM">AM</option>
+                                    <option value="BA">BA</option>
+                                    <option value="CE">CE</option>
+                                    <option value="DF">DF</option>
+                                    <option value="ES">ES</option>
+                                    <option value="GO">GO</option>
+                                    <option value="MA">MA</option>
+                                    <option value="MT">MT</option>
+                                    <option value="MS">MS</option>
+                                    <option value="MG">MG</option>
+                                    <option value="PA">PA</option>
+                                    <option value="PB">PB</option>
+                                    <option value="PR">PR</option>
+                                    <option value="PE">PE</option>
+                                    <option value="PI">PI</option>
+                                    <option value="RJ">RJ</option>
+                                    <option value="RN">RN</option>
+                                    <option value="RS">RS</option>
+                                    <option value="RO">RO</option>
+                                    <option value="RR">RR</option>
+                                    <option value="SC">SC</option>
+                                    <option value="SP">SP</option>
+                                    <option value="SE">SE</option>
+                                    <option value="TO">TO</option>
+                                </select>
+                                <label for="estado">Estado (UF)</label>
+                                <div class="invalid-feedback">Selecione a UF.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="cep" placeholder="99999-999" maxlength="9" required>
+                        <label for="cep">CEP</label>
+                        <div class="invalid-feedback">Informe um CEP válido.</div>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input type="date" class="form-control" id="data_nascimento" required>
+                        <label for="data_nascimento">Data de Nascimento</label>
+                        <div class="invalid-feedback">Informe uma data de nascimento válida (não futura).</div>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <select class="form-select" id="tipoUsuario" required>
+                            <option value="">Selecione...</option>
+                            <option value="doador">Sou Doador</option>
+                            <option value="instituicao">Sou Instituição</option>
+                        </select>
+                        <label for="tipoUsuario">Tipo de Usuário</label>
+                        <div class="invalid-feedback">Selecione o tipo de usuário.</div>
+                    </div>
+
+                    <!-- Campos extras: nome da instituição (aparece se instituicao), CNPJ e descrição -->
+                    <div class="form-floating mb-3 d-none" id="instituicaoGroup">
+                        <input type="text" class="form-control" id="nome_instituicao" placeholder="Nome da Instituição">
+                        <label for="nome_instituicao">Nome da Instituição</label>
+                        <div class="invalid-feedback">Informe o nome da instituição.</div>
+                    </div>
+
+                    <div class="form-floating mb-3 d-none" id="cnpjGroup">
+                        <input type="text" class="form-control" id="cnpj" placeholder="99.999.999/0001-99" maxlength="18">
+                        <label for="cnpj">CNPJ</label>
+                        <div class="invalid-feedback">Informe um CNPJ válido.</div>
+                    </div>
+
+                    <div class="form-floating mb-3 d-none" id="companyNameGroup">
+                        <input type="text" class="form-control" id="nome_empresa" placeholder="Nome da Empresa">
+                        <label for="nome_empresa">Nome da Empresa</label>
+                        <div class="invalid-feedback">Informe o nome da empresa.</div>
+                    </div>
+
+                    <div class="form-floating mb-3 d-none" id="companyLocalGroup">
+                        <input type="text" class="form-control" id="local_empresa" placeholder="Local da Empresa (cidade/bairro)">
+                        <label for="local_empresa">Local da Empresa</label>
+                        <div class="invalid-feedback">Informe o local da empresa.</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="descricao" class="form-label">Descrição (mínimo 20 caracteres)</label>
+                        <textarea class="form-control" id="descricao" rows="3" placeholder="Descreva sua instituição ou observações..."></textarea>
+                        <div class="invalid-feedback">A descrição deve ter ao menos 20 caracteres.</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="escolaridade" class="form-label">Nível de escolaridade</label>
+                        <select class="form-select" id="escolaridade" required>
+                            <option value="">Selecione...</option>
+                            <option value="ensino_medio_incompleto">Ensino médio incompleto</option>
+                            <option value="ensino_medio_completo">Ensino médio completo</option>
+                            <option value="ensino_superior_incompleto">Ensino superior incompleto</option>
+                            <option value="ensino_superior_completo">Ensino superior completo</option>
+                            <option value="mestrado">Mestrado</option>
+                            <option value="doutorado">Doutorado</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                        <div class="invalid-feedback">Selecione o nível de escolaridade.</div>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input type="password" class="form-control" id="senha" placeholder="Senha" required>
+                        <label for="senha">Senha</label>
+                        <div class="invalid-feedback">A senha deve ter ao menos 8 caracteres.</div>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input type="password" class="form-control" id="conf_senha" placeholder="Confirmar Senha" required>
+                        <label for="conf_senha">Confirmar Senha</label>
+                        <div class="invalid-feedback">As senhas devem coincidir.</div>
+                    </div>
+
+                    <div id="formAlert" class="alert d-none" role="alert"></div>
+                    <button class="btn btn-custom text-white w-100 py-2 fw-bold" type="submit">Cadastrar-se</button>
+                </form>
+                
+                <!-- Tabela dinâmica embutida - registros na mesma página -->
+                <div class="mt-4">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h5 class="text-custom">Registros (lista em memória)</h5>
+                        <div>
+                            <button id="editSelectedBtn" class="btn btn-sm btn-primary me-2">Editar selecionados</button>
+                            <button id="deleteSelectedBtn" class="btn btn-sm btn-danger me-2">Excluir selecionados</button>
+                            <button id="clearBtn" class="btn btn-sm btn-outline-danger">Limpar registros</button>
+                        </div>
+                    </div>
+                    <div id="tableContainer" class="table-responsive"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="bg-custom text-white py-5 mt-5">
+    <div class="container">
+        <div class="row gy-4 align-items-center">
+            <div class="col-lg-5 text-center text-lg-start">
+                <a href="../../index.html" class="mb-3 d-inline-block">
+                    <img src="../img/logo.png" alt="Logo Mãos Unidas" class="logo-footer">
+                </a>
+                <p>Seja você um doador (pessoa física ou empresa) ou uma instituição, o cadastro é simples e leva poucos minutos.</p>
+            </div>
+                <div class="col-lg-6 text-center text-lg-start ps-lg-5">
+                <h5 class="text-uppercase">Menu</h5>
+                <ul class="list-unstyled">
+                    <li><a href="../../index.html">Início</a></li>
+                    <li><a href="dashboard_doador.html">Doadores</a></li>
+                    <li><a href="dashboard_instituicao.html">Instituição</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                    <li><a href="transparencia.html">Transparência</a></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="register.html">Registro</a></li>
+                </ul>
+            </div>
+        </div>
+        <hr class="my-4" style="color: rgba(255,255,255,0.2);">
+        <div class="text-center">
+            <p class="mb-0">&copy; Mãos Unidas 2025. Todos os direitos reservados.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const cpfEl = document.getElementById('cpf');
+    const telEl = document.getElementById('telefone');
+    const cepEl = document.getElementById('cep');
+    const cnpjEl = document.getElementById('cnpj');
+    const tipoEl = document.getElementById('tipoUsuario');
+    const instituicaoGroup = document.getElementById('instituicaoGroup');
+    const cnpjGroup = document.getElementById('cnpjGroup');
+    const documentoTipoEl = document.getElementById('documentoTipo');
+    const cpfGroup = document.getElementById('cpfGroup');
+    const companyNameGroup = document.getElementById('companyNameGroup');
+    const companyLocalGroup = document.getElementById('companyLocalGroup');
+    const rgEl = document.getElementById('rg');
+    const rgGroup = document.getElementById('rgGroup');
+    const profEl = document.getElementById('profissao');
+    const motivoEl = document.getElementById('motivo');
+    const form = document.getElementById('cadastroForm');
+    const formAlert = document.getElementById('formAlert');
+
+    // Máscaras simples
+    function maskCPF(v){
+        v = v.replace(/\D/g,'');
+        v = v.replace(/(\d{3})(\d)/,'$1.$2');
+        v = v.replace(/(\d{3})(\d)/,'$1.$2');
+        v = v.replace(/(\d{3})(\d{1,2})$/,'$1-$2');
+        return v;
+    }
+    // Busca automática de endereço pelo CEP usando ViaCEP
+    document.getElementById('cep').addEventListener('blur', async (e) => {
+        const raw = e.target.value.replace(/\D/g, '');
+        if (!raw || raw.length !== 8) return; // CEP inválido
+
+        try {
+            const response = await fetch(`https://viacep.com.br/ws/${raw}/json/`);
+            const data = await response.json();
+            if (data.erro) {
+                console.log('CEP não encontrado');
+                alert('CEP não encontrado. Verifique o número.');
+                return;
+            }
+
+            // Preenche os campos de endereço com os dados retornados
+            if (data.logradouro) document.getElementById('endereco').value = data.logradouro;
+            if (data.bairro) document.getElementById('bairro').value = data.bairro;
+            if (data.localidade) document.getElementById('cidade').value = data.localidade;
+            if (data.uf) document.getElementById('estado').value = data.uf;
+        } catch (err) {
+            console.error('Erro ao buscar CEP:', err);
+            alert('Erro ao buscar CEP. Tente novamente mais tarde.');
+        }
+    });
+    function maskTel(v){
+        v = v.replace(/\D/g,'');
+        v = v.replace(/^(\d{2})(\d)/g,'($1) $2');
+        v = v.replace(/(\d{5})(\d)/,'$1-$2');
+        return v;
+    }
+    function maskCEP(v){
+        v = v.replace(/\D/g,'');
+        v = v.replace(/(\d{5})(\d)/,'$1-$2');
+        return v;
+    }
+    function maskRG(v){
+        v = v.replace(/\D/g,'');
+        v = v.replace(/^(\d{2})(\d)/, '$1.$2');
+        v = v.replace(/^(\d{2}\.\d{3})(\d)/, '$1.$2');
+        v = v.replace(/(\d{2}\.\d{3}\.\d{3})(\d)/, '$1-$2');
+        return v;
+    }
+    function maskCNPJ(v){
+        v = v.replace(/\D/g,'');
+        v = v.replace(/(\d{2})(\d)/,'$1.$2');
+        v = v.replace(/(\d{3})(\d)/,'$1.$2');
+        v = v.replace(/(\d{3})(\d)/,'$1/$2');
+        v = v.replace(/(\d{4})(\d{1,2})$/,'$1-$2');
+        return v;
+    }
+
+    cpfEl && cpfEl.addEventListener('input', e => e.target.value = maskCPF(e.target.value));
+    telEl && telEl.addEventListener('input', e => e.target.value = maskTel(e.target.value));
+    cepEl && cepEl.addEventListener('input', e => e.target.value = maskCEP(e.target.value));
+    cnpjEl && cnpjEl.addEventListener('input', e => e.target.value = maskCNPJ(e.target.value));
+    rgEl && rgEl.addEventListener('input', e => e.target.value = maskRG(e.target.value));
+
+    // Mostrar campos da instituição quando aplicável (por tipoUsuario) e também por escolha de documento (CPF/CNPJ)
+    function updateDocumentFields(){
+        const doc = documentoTipoEl ? documentoTipoEl.value : 'cpf';
+        if (doc === 'cnpj'){
+            cnpjGroup.classList.remove('d-none');
+            companyNameGroup.classList.remove('d-none');
+            companyLocalGroup.classList.remove('d-none');
+            cpfGroup.classList.add('d-none');
+            cnpjGroup && cnpjEl.setAttribute('required','');
+            document.getElementById('nome_empresa').setAttribute('required','');
+            document.getElementById('local_empresa').setAttribute('required','');
+            // esconder RG quando documento for CNPJ
+            rgGroup && rgGroup.classList.add('d-none');
+            rgEl && rgEl.removeAttribute('required');
+        } else {
+            cnpjGroup.classList.add('d-none');
+            companyNameGroup.classList.add('d-none');
+            companyLocalGroup.classList.add('d-none');
+            cpfGroup.classList.remove('d-none');
+            cnpjEl && cnpjEl.removeAttribute('required');
+            document.getElementById('nome_empresa').removeAttribute('required');
+            document.getElementById('local_empresa').removeAttribute('required');
+            // mostrar RG quando documento for CPF
+            rgGroup && rgGroup.classList.remove('d-none');
+            rgEl && rgEl.setAttribute('required','');
+        }
+
+        // além disso, se o usurio for do tipo instituição, exibe também o blpco de instituição existente
+        const v = tipoEl ? tipoEl.value : '';
+        if (v === 'instituicao'){
+            instituicaoGroup.classList.remove('d-none');
+            document.getElementById('nome_instituicao').setAttribute('required','');
+            cnpjGroup.classList.remove('d-none');
+            document.getElementById('cnpj').setAttribute('required','');
+        } else {
+            instituicaoGroup.classList.add('d-none');
+            document.getElementById('nome_instituicao').removeAttribute('required');
+            if (documentoTipoEl && documentoTipoEl.value !== 'cnpj'){
+                cnpjGroup.classList.add('d-none');
+            }
+        }
+    }
+
+    tipoEl && tipoEl.addEventListener('change', updateDocumentFields);
+    documentoTipoEl && documentoTipoEl.addEventListener('change', updateDocumentFields);
+    // inicializa conforme valores padrões
+    updateDocumentFields();
+
+    // Validações auxiliares
+    function onlyDigits(s){ return s.replace(/\D/g,''); }
+
+    function isValidCPF(cpf){
+        cpf = onlyDigits(cpf);
+        if (cpf.length !== 11 || /^(\d)\1+$/.test(cpf)) return false;
+        let sum = 0; for (let i=0;i<9;i++) sum += parseInt(cpf.charAt(i))*(10-i);
+        let rev = 11 - (sum % 11); if (rev === 10 || rev === 11) rev = 0;
+        if (rev !== parseInt(cpf.charAt(9))) return false;
+        sum = 0; for (let i=0;i<10;i++) sum += parseInt(cpf.charAt(i))*(11-i);
+        rev = 11 - (sum % 11); if (rev === 10 || rev === 11) rev = 0;
+        return rev === parseInt(cpf.charAt(10));
+    }
+
+    function isValidCNPJ(cnpj){
+        cnpj = onlyDigits(cnpj);
+        if (cnpj.length !== 14) return false;
+        if (/^(\d)\1+$/.test(cnpj)) return false;
+        let length = cnpj.length - 2;
+        let numbers = cnpj.substring(0, length);
+        let digits = cnpj.substring(length);
+        let sum = 0;
+        let pos = length - 7;
+        for (let i = length; i >= 1; i--) {
+            sum += numbers.charAt(length - i) * pos--;
+            if (pos < 2) pos = 9;
+        }
+        let result = sum % 11 < 2 ? 0 : 11 - (sum % 11);
+        if (result != digits.charAt(0)) return false;
+
+        length = length + 1;
+        numbers = cnpj.substring(0, length);
+        sum = 0;
+        pos = length - 7;
+        for (let i = length; i >= 1; i--) {
+            sum += numbers.charAt(length - i) * pos--;
+            if (pos < 2) pos = 9;
+        }
+        result = sum % 11 < 2 ? 0 : 11 - (sum % 11);
+        return result == digits.charAt(1);
+    }
+
+    function isValidRG(rg){
+        rg = onlyDigits(rg);
+        if (rg.length < 7 || rg.length > 9) return false;
+        if (/^(\d)\1+$/.test(rg)) return false;
+        return true;
+    }
+
+    function showAlert(message, type='danger'){
+        formAlert.className = `alert alert-${type}`;
+        formAlert.textContent = message;
+        formAlert.classList.remove('d-none');
+        window.scrollTo({ top: form.offsetTop - 20, behavior: 'smooth' });
+    }
+
+    // --- Código da tabela dinâmica (em memória) ---
+    function formatDate(iso) {
+        if (!iso) return '';
+        const d = new Date(iso);
+        if (isNaN(d)) return iso;
+        return d.toLocaleDateString('pt-BR');
+    }
+
+    function buildTable(regs) {
+        const container = document.getElementById('tableContainer');
+        if (!container) return;
+        container.innerHTML = '';
+        if (!regs || regs.length === 0) {
+            container.innerHTML = '<p class="mb-0">Nenhum registro encontrado.</p>';
+            return;
+        }
+
+        const people = regs.filter(r => (r.documentoTipo === 'cpf') || (r.tipo === 'doador' && r.cpf));
+        const companies = regs.filter(r => (r.documentoTipo === 'cnpj') || (r.tipo === 'instituicao' || r.cnpj));
+
+        if (people.length > 0) {
+            const peopleTitle = document.createElement('h6');
+            peopleTitle.textContent = 'Pessoas / Doadores';
+            peopleTitle.className = 'mt-2';
+            container.appendChild(peopleTitle);
+
+            const table = document.createElement('table');
+            table.className = 'table table-striped table-hover';
+            const thead = document.createElement('thead');
+            thead.innerHTML = `
+                <tr>
+                    <th style="width:40px"><input id="selectAllPeople" type="checkbox"></th>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Gênero</th>
+                    <th>CPF</th>
+                    <th>Telefone</th>
+                    <th>RG</th>
+                    <th>Profissão</th>
+                    <th>Motivo</th>
+                    <th>Endereço</th>
+                    <th>Bairro</th>
+                    <th>Cidade</th>
+                    <th>Estado</th>
+                    <th>CEP</th>
+                    <th>Data Nasc.</th>
+                    <th>Tipo</th>
+                    <th>Escolaridade</th>
+                    <th>Descrição</th>
+                    <th>Cadastro em</th>
+                    <th>Ações</th>
+                </tr>
+            `;
+            table.appendChild(thead);
+            const tbody = document.createElement('tbody');
+            people.forEach((r) => {
+                const originalIndex = regs.indexOf(r);
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td><input class="row-checkbox" type="checkbox" data-index="${originalIndex}"></td>
+                    <td>${r.nome || ''}</td>
+                    <td>${r.email || ''}</td>
+                    <td>${r.genero || ''}</td>
+                    <td>${r.cpf || ''}</td>
+                    <td>${r.telefone || ''}</td>
+                    <td>${r.rg || ''}</td>
+                    <td>${r.profissao || ''}</td>
+                    <td>${r.motivo || ''}</td>
+                    <td>${r.endereco || ''}</td>
+                    <td>${r.bairro || ''}</td>
+                    <td>${r.cidade || ''}</td>
+                    <td>${r.estado || ''}</td>
+                    <td>${r.cep || ''}</td>
+                    <td>${r.data_nascimento ? new Date(r.data_nascimento).toLocaleDateString('pt-BR') : ''}</td>
+                    <td>${r.tipo || ''}</td>
+                    <td>${r.escolaridade || ''}</td>
+                    <td>${r.descricao ? (r.descricao.length > 40 ? r.descricao.slice(0,40)+'...' : r.descricao) : ''}</td>
+                    <td>${formatDate(r.criadoEm)}</td>
+                    <td><button class="btn btn-sm btn-outline-primary single-edit-btn" data-index="${originalIndex}">Editar</button></td>
+                `;
+                tbody.appendChild(tr);
+            });
+            table.appendChild(tbody);
+            container.appendChild(table);
+        }
+
+        if (companies.length > 0) {
+            const compTitle = document.createElement('h6');
+            compTitle.textContent = 'Empresas / Instituições';
+            compTitle.className = 'mt-3';
+            container.appendChild(compTitle);
+
+            const table = document.createElement('table');
+            table.className = 'table table-striped table-hover';
+            const thead = document.createElement('thead');
+            thead.innerHTML = `
+                <tr>
+                    <th style="width:40px"><input id="selectAllCompanies" type="checkbox"></th>
+                    <th>Nome Instituição</th>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>CNPJ</th>
+                    <th>Nome Empresa</th>
+                    <th>Local Empresa</th>
+                    <th>Telefone</th>
+                    <th>Endereço</th>
+                    <th>Bairro</th>
+                    <th>Cidade</th>
+                    <th>Estado</th>
+                    <th>CEP</th>
+                    <th>Tipo</th>
+                    <th>Descrição</th>
+                    <th>Cadastro em</th>
+                    <th>Ações</th>
+                </tr>
+            `;
+            table.appendChild(thead);
+            const tbody = document.createElement('tbody');
+            companies.forEach((r) => {
+                const originalIndex = regs.indexOf(r);
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td><input class="row-checkbox" type="checkbox" data-index="${originalIndex}"></td>
+                    <td>${r.nome_instituicao || ''}</td>
+                    <td>${r.nome || ''}</td>
+                    <td>${r.email || ''}</td>
+                    <td>${r.cnpj || ''}</td>
+                    <td>${r.nome_empresa || ''}</td>
+                    <td>${r.local_empresa || ''}</td>
+                    <td>${r.telefone || ''}</td>
+                    <td>${r.endereco || ''}</td>
+                    <td>${r.bairro || ''}</td>
+                    <td>${r.cidade || ''}</td>
+                    <td>${r.estado || ''}</td>
+                    <td>${r.cep || ''}</td>
+                    <td>${r.tipo || ''}</td>
+                    <td>${r.descricao ? (r.descricao.length > 40 ? r.descricao.slice(0,40)+'...' : r.descricao) : ''}</td>
+                    <td>${formatDate(r.criadoEm)}</td>
+                    <td><button class="btn btn-sm btn-outline-primary single-edit-btn" data-index="${originalIndex}">Editar</button></td>
+                `;
+                tbody.appendChild(tr);
+            });
+            table.appendChild(tbody);
+            container.appendChild(table);
+        }
+    }
+
+    // exemplos iniciais
+    const examples = [
+        { nome: 'João Silva', genero: 'masculino', email: 'joao.silva@example.com', documentoTipo: 'cpf', cpf: '123.456.789-09', telefone: '(11) 98888-7777', rg: '12.345.678-9', endereco: 'Av. Paulista, 1000', bairro: 'Bela Vista', cidade: 'São Paulo', estado: 'SP', cep: '01310-100', data_nascimento: '1990-05-10', tipo: 'doador', escolaridade: 'ensino_superior_completo', criadoEm: new Date().toISOString() },
+        { nome_instituicao: 'Instituto Esperança', nome: 'Instituto Esperança', email: 'contato@institutoesperanca.org', documentoTipo: 'cnpj', cnpj: '12.345.678/0001-90', telefone: '(31) 99999-5555', endereco: 'Av. Aconchego, 50', bairro: 'Centro', cidade: 'Belo Horizonte', estado: 'MG', cep: '30110-000', tipo: 'instituicao', criadoEm: new Date().toISOString(), nome_empresa: 'Instituto Esperança', local_empresa: 'Belo Horizonte' }
+    ];
+
+    // vetor em memória para esta página
+    let regs = examples.slice();
+
+    // render inicial
+    buildTable(regs);
+
+    // handlers para botões da tabela
+    document.getElementById('clearBtn')?.addEventListener('click', () => {
+        if (!confirm('Deseja realmente limpar todos os registros atuais da tabela? Esta ação não pode ser desfeita.')) return;
+        regs = [];
+        buildTable(regs);
+    });
+
+    document.getElementById('tableContainer')?.addEventListener('click', (e) => {
+        const singleEdit = e.target.closest('.single-edit-btn');
+        if (singleEdit) {
+            const index = Number(singleEdit.dataset.index);
+            openEditModal(index);
+            return;
+        }
+    });
+
+    document.addEventListener('change', (e) => {
+        if (e.target && e.target.id === 'selectAllPeople') {
+            const checked = e.target.checked;
+            document.querySelectorAll('#tableContainer table:nth-of-type(1) .row-checkbox').forEach(cb => cb.checked = checked);
+        }
+        if (e.target && e.target.id === 'selectAllCompanies') {
+            const checked = e.target.checked;
+            const tables = document.querySelectorAll('#tableContainer table');
+            if (tables[1]) tables[1].querySelectorAll('.row-checkbox').forEach(cb => cb.checked = checked);
+        }
+    });
+
+    document.getElementById('deleteSelectedBtn')?.addEventListener('click', () => {
+        const checked = Array.from(document.querySelectorAll('.row-checkbox:checked'));
+        if (checked.length === 0) { alert('Selecione ao menos um registro para excluir.'); return; }
+        if (!confirm(`Deseja realmente excluir ${checked.length} registro(s)? Esta ação não pode ser desfeita.`)) return;
+        const indexes = checked.map(cb => Number(cb.dataset.index)).filter(n => !isNaN(n));
+        indexes.sort((a,b) => b - a).forEach(i => regs.splice(i,1));
+        buildTable(regs);
+    });
+
+    let pendingEditIndices = [];
+    document.getElementById('editSelectedBtn')?.addEventListener('click', () => {
+        const checked = Array.from(document.querySelectorAll('.row-checkbox:checked'));
+        if (checked.length === 0) { alert('Selecione ao menos um registro para editar.'); return; }
+        pendingEditIndices = checked.map(cb => Number(cb.dataset.index)).filter(n => !isNaN(n)).sort((a,b)=>a-b);
+        const next = pendingEditIndices.shift();
+        if (typeof next === 'number') openEditModal(next);
+    });
+
+    const editModalEl = document.getElementById('editModal');
+    const bootstrapModal = editModalEl ? new bootstrap.Modal(editModalEl) : null;
+
+    document.getElementById('editForm')?.addEventListener('submit', (ev) => {
+        ev.preventDefault();
+        const idx = Number(document.getElementById('edit_index').value);
+        if (!regs[idx]) return;
+        regs[idx] = {
+            ...regs[idx],
+            nome: document.getElementById('edit_nome').value.trim(),
+            email: document.getElementById('edit_email').value.trim(),
+            cpf: document.getElementById('edit_cpf').value.trim(),
+            cnpj: document.getElementById('edit_cnpj') ? document.getElementById('edit_cnpj').value.trim() : (regs[idx].cnpj || ''),
+            telefone: document.getElementById('edit_telefone').value.trim(),
+            rg: document.getElementById('edit_rg') ? document.getElementById('edit_rg').value.trim() : (regs[idx].rg || ''),
+            nome_instituicao: document.getElementById('edit_nome_instituicao') ? document.getElementById('edit_nome_instituicao').value.trim() : (regs[idx].nome_instituicao || ''),
+            nome_empresa: document.getElementById('edit_nome_empresa') ? document.getElementById('edit_nome_empresa').value.trim() : (regs[idx].nome_empresa || ''),
+            local_empresa: document.getElementById('edit_local_empresa') ? document.getElementById('edit_local_empresa').value.trim() : (regs[idx].local_empresa || ''),
+            endereco: document.getElementById('edit_endereco').value.trim(),
+            bairro: document.getElementById('edit_bairro') ? document.getElementById('edit_bairro').value.trim() : (regs[idx].bairro || ''),
+            cidade: document.getElementById('edit_cidade').value.trim(),
+            estado: document.getElementById('edit_estado').value.trim(),
+            cep: document.getElementById('edit_cep').value.trim(),
+            data_nascimento: document.getElementById('edit_data_nascimento').value,
+            tipo: document.getElementById('edit_tipoUsuario').value
+        };
+        buildTable(regs);
+        if (window.pendingEditIndices && window.pendingEditIndices.length > 0) {
+            const nextIdx = window.pendingEditIndices.shift();
+            openEditModal(nextIdx);
+        } else {
+            bootstrapModal.hide();
+        }
+    });
+
+    function openEditModal(index) {
+        const r = regs[index];
+        if (!r) return;
+        document.getElementById('edit_index').value = index;
+        document.getElementById('edit_nome').value = r.nome || '';
+        document.getElementById('edit_email').value = r.email || '';
+        document.getElementById('edit_cpf').value = r.cpf || '';
+        if (document.getElementById('edit_cnpj')) document.getElementById('edit_cnpj').value = r.cnpj || '';
+        document.getElementById('edit_telefone').value = r.telefone || '';
+        if (document.getElementById('edit_rg')) document.getElementById('edit_rg').value = r.rg || '';
+        if (document.getElementById('edit_nome_instituicao')) document.getElementById('edit_nome_instituicao').value = r.nome_instituicao || '';
+        if (document.getElementById('edit_nome_empresa')) document.getElementById('edit_nome_empresa').value = r.nome_empresa || '';
+        if (document.getElementById('edit_local_empresa')) document.getElementById('edit_local_empresa').value = r.local_empresa || '';
+        document.getElementById('edit_endereco').value = r.endereco || '';
+        if (document.getElementById('edit_bairro')) document.getElementById('edit_bairro').value = r.bairro || '';
+        document.getElementById('edit_cidade').value = r.cidade || '';
+        document.getElementById('edit_estado').value = r.estado || '';
+        document.getElementById('edit_cep').value = r.cep || '';
+        document.getElementById('edit_data_nascimento').value = r.data_nascimento || '';
+        document.getElementById('edit_tipoUsuario').value = r.tipo || '';
+        window.pendingEditIndices = window.pendingEditIndices || [];
+        bootstrapModal.show();
+    }
+
+    // Submit com validação inline (sem alert())
+    form && form.addEventListener('submit', e => {
+        e.preventDefault();
+        formAlert.classList.add('d-none');
+
+        // Limpa estados
+        form.querySelectorAll('.is-invalid').forEach(el=>el.classList.remove('is-invalid'));
+
+        const get = id => document.getElementById(id);
+        const nome = get('nome').value.trim();
+        const genero = get('genero') ? get('genero').value : '';
+        const email = get('email').value.trim();
+        const cpf = get('cpf').value.trim();
+        const telefone = get('telefone').value.trim();
+        const rg = get('rg') ? get('rg').value.trim() : '';
+        const profissao = get('profissao') ? get('profissao').value.trim() : '';
+        const motivo = get('motivo') ? get('motivo').value.trim() : '';
+        const endereco = get('endereco').value.trim();
+        const cidade = get('cidade').value.trim();
+        const estado = get('estado').value.trim();
+        const cep = get('cep').value.trim();
+        const data = get('data_nascimento').value;
+        const tipo = get('tipoUsuario').value;
+        const nome_instituicao = get('nome_instituicao') ? get('nome_instituicao').value.trim() : '';
+        const documentoTipo = get('documentoTipo') ? get('documentoTipo').value : 'cpf';
+        const cnpj = get('cnpj') ? get('cnpj').value.trim() : '';
+        const nome_empresa = get('nome_empresa') ? get('nome_empresa').value.trim() : '';
+        const local_empresa = get('local_empresa') ? get('local_empresa').value.trim() : '';
+        const descricao = get('descricao').value.trim();
+        const senha = get('senha').value;
+        const conf = get('conf_senha').value;
+
+        // Verificações básicas
+        if (!nome){ get('nome').classList.add('is-invalid'); showAlert('Por favor, preencha o nome.'); return; }
+        if (!genero){ get('genero').classList.add('is-invalid'); showAlert('Selecione o gênero.'); return; }
+        if (!email || (email.match(/@/g)||[]).length !== 1){ get('email').classList.add('is-invalid'); showAlert('E-mail inválido.'); return; }
+        const telDigits = onlyDigits(telefone);
+        if (!telefone || (telDigits.length !== 10 && telDigits.length !== 11)){ get('telefone').classList.add('is-invalid'); showAlert('Telefone inválido.'); return; }
+        // RG só é obrigatório/validado quando o documento selecionado for CPF
+        if (documentoTipo === 'cpf'){
+            if (!rg || !isValidRG(rg)){ get('rg').classList.add('is-invalid'); showAlert('RG inválido.'); return; }
+        }
+        if (!endereco){ get('endereco').classList.add('is-invalid'); showAlert('Endereço é obrigatório.'); return; }
+        if (!cidade){ get('cidade').classList.add('is-invalid'); showAlert('Cidade é obrigatória.'); return; }
+        if (!estado || estado.length !== 2){ get('estado').classList.add('is-invalid'); showAlert('Estado inválido (use a sigla, 2 letras).'); return; }
+        if (!cep || onlyDigits(cep).length !== 8){ get('cep').classList.add('is-invalid'); showAlert('CEP inválido.'); return; }
+        if (!data || new Date(data) > new Date()){ get('data_nascimento').classList.add('is-invalid'); showAlert('Data de nascimento inválida.'); return; }
+        if (!tipo){ get('tipoUsuario').classList.add('is-invalid'); showAlert('Selecione o tipo de usuário.'); return; }
+        if (documentoTipo === 'cpf'){
+            if (!cpf || !isValidCPF(cpf)){ get('cpf').classList.add('is-invalid'); showAlert('CPF inválido.'); return; }
+        } else {
+            // documentoTipo === 'cnpj'
+            if (!cnpj || !isValidCNPJ(cnpj)){ get('cnpj').classList.add('is-invalid'); showAlert('CNPJ inválido.'); return; }
+            if (!nome_empresa){ get('nome_empresa').classList.add('is-invalid'); showAlert('Informe o nome da empresa.'); return; }
+            if (!local_empresa){ get('local_empresa').classList.add('is-invalid'); showAlert('Informe o local da empresa.'); return; }
+        }
+
+        if (tipo === 'instituicao'){
+            if (!nome_instituicao){ get('nome_instituicao').classList.add('is-invalid'); showAlert('Informe o nome da instituição.'); return; }
+            if (!cnpj || !isValidCNPJ(cnpj)){ get('cnpj').classList.add('is-invalid'); showAlert('CNPJ inválido.'); return; }
+        }
+        if (!descricao || descricao.length < 20){ get('descricao').classList.add('is-invalid'); showAlert('A descrição deve ter ao menos 20 caracteres.'); return; }
+        const escolaridade = get('escolaridade') ? get('escolaridade').value : '';
+        if (!escolaridade){ get('escolaridade').classList.add('is-invalid'); showAlert('Selecione o nível de escolaridade.'); return; }
+        // profissão e motivo
+        if (!profissao){ get('profissao').classList.add('is-invalid'); showAlert('Informe sua profissão.'); return; }
+        if (!motivo || motivo.length < 10){ get('motivo').classList.add('is-invalid'); showAlert('Descreva o motivo com ao menos 10 caracteres.'); return; }
+        if (!senha || senha.length < 8){ get('senha').classList.add('is-invalid'); showAlert('A senha deve ter ao menos 8 caracteres.'); return; }
+        if (senha !== conf){ get('conf_senha').classList.add('is-invalid'); showAlert('As senhas não coincidem.'); return; }
+
+        // Transferir registro para a página de tabela sem salvar no navegador
+        const bairro = get('bairro').value.trim();
+        const registration = { nome, genero, email, documentoTipo, cpf, cnpj, documento: documentoTipo === 'cpf' ? cpf : cnpj, telefone, rg, profissao, motivo, endereco, bairro, cidade, estado, cep, data_nascimento: data, tipo, escolaridade, nome_instituicao, nome_empresa, local_empresa, descricao, senha, criadoEm: new Date().toISOString() };
+
+        // Adiciona o registro diretamente ao array em memória e atualiza a tabela
+        regs.unshift(registration);
+        buildTable(regs);
+        showAlert('Cadastro realizado com sucesso! Registro adicionado à tabela abaixo.', 'success');
+        // limpa o formulário
+        form.reset();
+        updateDocumentFields();
+    });
+});
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
+<div class="modal fade" id="editModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Editar Registro</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+            </div>
+            <form id="editForm">
+                <input type="hidden" id="edit_index">
+                <div class="modal-body">
+                    <div class="row g-2">
+                        <div class="col-md-6 form-floating mb-2">
+                            <input id="edit_nome" class="form-control" required>
+                            <label for="edit_nome">Nome</label>
+                        </div>
+                        <div class="col-md-6 form-floating mb-2">
+                            <input id="edit_email" type="email" class="form-control" required>
+                            <label for="edit_email">Email</label>
+                        </div>
+                        <div class="col-md-4 form-floating mb-2">
+                            <input id="edit_cpf" class="form-control">
+                            <label for="edit_cpf">CPF</label>
+                        </div>
+                        <div class="col-md-4 form-floating mb-2">
+                            <input id="edit_cnpj" class="form-control">
+                            <label for="edit_cnpj">CNPJ</label>
+                        </div>
+                        <div class="col-md-4 form-floating mb-2">
+                            <input id="edit_telefone" class="form-control">
+                            <label for="edit_telefone">Telefone</label>
+                        </div>
+                        <div class="col-md-4 form-floating mb-2">
+                            <input id="edit_rg" class="form-control">
+                            <label for="edit_rg">RG</label>
+                        </div>
+                        <div class="col-md-4 form-floating mb-2">
+                            <input id="edit_nome_instituicao" class="form-control">
+                            <label for="edit_nome_instituicao">Nome Instituição</label>
+                        </div>
+                        <div class="col-md-4 form-floating mb-2">
+                            <input id="edit_nome_empresa" class="form-control">
+                            <label for="edit_nome_empresa">Nome Empresa</label>
+                        </div>
+                        <div class="col-md-6 form-floating mb-2">
+                            <input id="edit_local_empresa" class="form-control">
+                            <label for="edit_local_empresa">Local Empresa</label>
+                        </div>
+                        <div class="col-12 form-floating mb-2">
+                            <input id="edit_endereco" class="form-control">
+                            <label for="edit_endereco">Endereço</label>
+                        </div>
+                        <div class="col-md-6 form-floating mb-2">
+                            <input id="edit_bairro" class="form-control">
+                            <label for="edit_bairro">Bairro</label>
+                        </div>
+                        <div class="col-md-6 form-floating mb-2">
+                            <input id="edit_cidade" class="form-control">
+                            <label for="edit_cidade">Cidade</label>
+                        </div>
+                        <div class="col-md-6 form-floating mb-2">
+                            <input id="edit_estado" class="form-control">
+                            <label for="edit_estado">Estado (UF)</label>
+                        </div>
+                        <div class="col-md-6 form-floating mb-2">
+                            <input id="edit_cep" class="form-control">
+                            <label for="edit_cep">CEP</label>
+                        </div>
+                        <div class="col-md-6 form-floating mb-2">
+                            <input id="edit_data_nascimento" type="date" class="form-control">
+                            <label for="edit_data_nascimento">Data Nascimento</label>
+                        </div>
+                        <div class="col-12 form-floating mb-2">
+                            <select id="edit_tipoUsuario" class="form-select">
+                                <option value="">Selecione...</option>
+                                <option value="doador">Sou Doador</option>
+                                <option value="instituicao">Sou Instituição</option>
+                            </select>
+                            <label for="edit_tipoUsuario">Tipo de Usuário</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Salvar alterações</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
